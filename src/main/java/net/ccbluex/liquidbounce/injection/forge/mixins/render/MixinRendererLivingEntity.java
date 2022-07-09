@@ -132,8 +132,9 @@ public abstract class MixinRendererLivingEntity extends MixinRender {
                         chamsColor2 = new Color(0xffEF2626);
                         break;
                 }
-
-                GL11.glPushMatrix();
+                if(!semiVisible) {
+                    GL11.glPushMatrix();
+                }
                 GL11.glEnable(polygonOffsetLine);
                 GL11.glPolygonOffset(1.0F, 1000000.0F);
                 OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
@@ -176,7 +177,7 @@ public abstract class MixinRendererLivingEntity extends MixinRender {
                 GL11.glPopMatrix();
             }
 
-            if(semiVisible) {
+            if(semiVisible && !chamsFlag) {
                 GlStateManager.disableBlend();
                 GlStateManager.alphaFunc(516, 0.1F);
                 GlStateManager.popMatrix();
