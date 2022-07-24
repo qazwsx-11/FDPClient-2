@@ -921,7 +921,7 @@ open class Targets : Element(-46.0, -40.0, 1F, Side(Side.Horizontal.MIDDLE, Side
 
         // info text
         font.drawCenteredString(target.name, 40 + ((additionalWidth - font.getStringWidth(target.name)) / 2f), 5f, Color.WHITE.rgb, false)
-        val infoStr = ((decimalFormat.format((easingHP / target.maxHealth) * 100).roundToInt()).toString() + " - " + (decimalFormat.format(mc.thePlayer.getDistanceToEntityBox(target)).roundToInt()).toString() + "M")
+        val infoStr = ((((easingHP / target.maxHealth) * 100).roundToInt()).toString() + " - " + ((mc.thePlayer.getDistanceToEntityBox(target)).roundToInt()).toString() + "M")
 
         font.drawString(infoStr, 40f + ((additionalWidth - font.getStringWidth(infoStr)) / 2f), 36f - font.FONT_HEIGHT, Color.WHITE.rgb, false)
 
