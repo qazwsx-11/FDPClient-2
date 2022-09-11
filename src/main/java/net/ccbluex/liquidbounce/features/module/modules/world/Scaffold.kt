@@ -80,7 +80,7 @@ class Scaffold : Module() {
     private val expandLengthValue = IntegerValue("ExpandLength", 1, 1, 6)
 
     // Rotations
-    private val rotationsValue = ListValue("Rotations", arrayOf("None", "Vanilla", "AAC", "Test1", "Test2", "Custom"), "AAC")
+    private val rotationsValue = ListValue("Rotations", arrayOf("None", "Vanilla", "AAC", "MovementFix", "Test1", "Test2", "Custom"), "AAC")
     private val towerrotationsValue = ListValue("TowerRotations", arrayOf("None", "Vanilla", "AAC", "Test1", "Test2", "Custom"), "AAC")
     private val aacYawValue = IntegerValue("AACYawOffset", 0, 0, 90).displayable { rotationsValue.equals("AAC") }
     private val customYawValue = IntegerValue("CustomYaw", -145, -180, 180).displayable { rotationsValue.equals("Custom") }
@@ -909,6 +909,10 @@ class Scaffold : Module() {
                 "aac" -> {
                     placeRotation.rotation
                 }
+		"movementfix" -> {
+			val caluyaw = ((placeRotation.rotation.yaw / 0).roundtoint() * 0).toFloat()
+			Rotation(calcuyaw, placeRotation.rotation.pitch)
+		}
                 "vanilla" -> {
                     placeRotation.rotation
                 }
